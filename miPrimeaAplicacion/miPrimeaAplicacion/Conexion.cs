@@ -32,6 +32,9 @@ namespace miPrimeaAplicacion {
             objComando.CommandText = "SELECT * FROM materias";
             objDataAdapter.Fill(objDs, "materias");
 
+            objComando.CommandText = "SELECT * FROM usuarios_usss078426";
+            objDataAdapter.Fill(objDs, "usuarios_usss078426");
+
             return objDs;
         }
         public string administrarDatosAlumnos(String[] datos, String accion)
@@ -54,6 +57,23 @@ namespace miPrimeaAplicacion {
                 sql = "UPDATE materias SET codigo='" + datos[1] + "', nombre='" + datos[2] + "', uv='" + datos[3] + "' WHERE idMateria='" + datos[0] + "'";
             }else if (accion == "eliminar"){
                 sql = "DELETE FROM materias WHERE idMateria='" + datos[0] + "'";
+            }
+            return ejecutarSQL(sql);
+        }
+        public string mantenimiento_usuarios_usss078426(String[] datos, String accion)
+        {
+            String sql = "";
+            if (accion == "nuevo")
+            {
+                sql = "INSERT INTO usuarios_usss078426(usuario,contrasena) VALUES ('" + datos[1] + "', '" + datos[2] + "')";
+            }
+            else if (accion == "modificar")
+            {
+                sql = "UPDATE usuarios_usss078426 SET usuario='" + datos[1] + "', contrasena='" + datos[2] + "' WHERE idUsuario='" + datos[0] + "'";
+            }
+            else if (accion == "eliminar")
+            {
+                sql = "DELETE FROM usuarios_usss078426 WHERE idUsuario='" + datos[0] + "'";
             }
             return ejecutarSQL(sql);
         }
