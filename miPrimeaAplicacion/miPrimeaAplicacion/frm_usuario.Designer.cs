@@ -41,6 +41,7 @@
             this.btnAgregarAlumno = new System.Windows.Forms.Button();
             this.txtBuscarAlumnos = new System.Windows.Forms.TextBox();
             this.grbEdicion = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblRegistrosAlumnos = new System.Windows.Forms.Label();
             this.btnUltimoAlumno = new System.Windows.Forms.Button();
             this.btnSiguienteAlumno = new System.Windows.Forms.Button();
@@ -165,6 +166,7 @@
             this.btnEliminarAlumno.TabIndex = 9;
             this.btnEliminarAlumno.Text = "Eliminar";
             this.btnEliminarAlumno.UseVisualStyleBackColor = true;
+            this.btnEliminarAlumno.Click += new System.EventHandler(this.btnEliminarAlumno_Click);
             // 
             // btnModificarALumno
             // 
@@ -176,7 +178,6 @@
             this.btnModificarALumno.TabIndex = 8;
             this.btnModificarALumno.Text = "Modificar";
             this.btnModificarALumno.UseVisualStyleBackColor = true;
-            this.btnModificarALumno.Click += new System.EventHandler(this.frm_usuario_Load);
             // 
             // btnAgregarAlumno
             // 
@@ -188,6 +189,7 @@
             this.btnAgregarAlumno.TabIndex = 7;
             this.btnAgregarAlumno.Text = "Agregar";
             this.btnAgregarAlumno.UseVisualStyleBackColor = true;
+            this.btnAgregarAlumno.Click += new System.EventHandler(this.btnAgregarAlumno_Click);
             // 
             // txtBuscarAlumnos
             // 
@@ -199,6 +201,7 @@
             // 
             // grbEdicion
             // 
+            this.grbEdicion.Controls.Add(this.button1);
             this.grbEdicion.Controls.Add(this.btnEliminarAlumno);
             this.grbEdicion.Controls.Add(this.btnModificarALumno);
             this.grbEdicion.Controls.Add(this.btnAgregarAlumno);
@@ -206,10 +209,20 @@
             this.grbEdicion.Margin = new System.Windows.Forms.Padding(4);
             this.grbEdicion.Name = "grbEdicion";
             this.grbEdicion.Padding = new System.Windows.Forms.Padding(4);
-            this.grbEdicion.Size = new System.Drawing.Size(400, 75);
+            this.grbEdicion.Size = new System.Drawing.Size(488, 75);
             this.grbEdicion.TabIndex = 15;
             this.grbEdicion.TabStop = false;
             this.grbEdicion.Text = "Edicion";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(387, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 42);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Guardar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblRegistrosAlumnos
             // 
@@ -231,6 +244,7 @@
             this.btnUltimoAlumno.TabIndex = 6;
             this.btnUltimoAlumno.Text = ">|";
             this.btnUltimoAlumno.UseVisualStyleBackColor = true;
+            this.btnUltimoAlumno.Click += new System.EventHandler(this.btnUltimoAlumno_Click);
             // 
             // btnSiguienteAlumno
             // 
@@ -242,6 +256,7 @@
             this.btnSiguienteAlumno.TabIndex = 5;
             this.btnSiguienteAlumno.Text = ">";
             this.btnSiguienteAlumno.UseVisualStyleBackColor = true;
+            this.btnSiguienteAlumno.Click += new System.EventHandler(this.btnSiguienteAlumno_Click);
             // 
             // grbDatos
             // 
@@ -259,7 +274,6 @@
             this.grbDatos.Controls.Add(this.lblNombreAlumno);
             this.grbDatos.Controls.Add(this.txtUsuario);
             this.grbDatos.Controls.Add(this.lblCodigoAlumno);
-            this.grbDatos.Enabled = false;
             this.grbDatos.Location = new System.Drawing.Point(9, 13);
             this.grbDatos.Margin = new System.Windows.Forms.Padding(4);
             this.grbDatos.Name = "grbDatos";
@@ -425,6 +439,7 @@
             this.btnAnteriorAlumno.TabIndex = 4;
             this.btnAnteriorAlumno.Text = "<";
             this.btnAnteriorAlumno.UseVisualStyleBackColor = true;
+            this.btnAnteriorAlumno.Click += new System.EventHandler(this.btnAnteriorAlumno_Click);
             // 
             // btnPrimeroAlumno
             // 
@@ -436,6 +451,7 @@
             this.btnPrimeroAlumno.TabIndex = 3;
             this.btnPrimeroAlumno.Text = "|<";
             this.btnPrimeroAlumno.UseVisualStyleBackColor = true;
+            this.btnPrimeroAlumno.Click += new System.EventHandler(this.btnPrimeroAlumno_Click);
             // 
             // groupBox3
             // 
@@ -450,18 +466,19 @@
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(744, 422);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(1191, 426);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(120, 46);
             this.btnCerrarSesion.TabIndex = 19;
             this.btnCerrarSesion.Text = "Cerrar Sesion ";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click_1);
             // 
             // frm_usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1323, 494);
+            this.ClientSize = new System.Drawing.Size(1323, 596);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.lblBuscarAlumnos);
             this.Controls.Add(this.grdDatosUsuarios);
@@ -521,5 +538,6 @@
         private System.Windows.Forms.TextBox txtConfirmarClave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button button1;
     }
 }

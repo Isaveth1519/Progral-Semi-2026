@@ -77,10 +77,18 @@ namespace miPrimeaAplicacion
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("¿Desea salir de la aplicación?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void txtUsuarioLogin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void login_Load(object sender, EventArgs e)
         {
 
         }

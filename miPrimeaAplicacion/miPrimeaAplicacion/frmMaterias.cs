@@ -191,5 +191,20 @@ namespace miPrimeaAplicacion
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void txtUvMateria_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblUvMateria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBuscarMaterias_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -62,14 +62,18 @@ namespace miPrimeaAplicacion {
         }
         public string mantenimiento_usuarios_usss078426(String[] datos, String accion)
         {
+            // datos: 0=id, 1=usuario, 2=clave, 3=nombre, 4=direccion, 5=telefono
             String sql = "";
             if (accion == "nuevo")
             {
-                sql = "INSERT INTO usuarios_usss078426(usuario,contrasena) VALUES ('" + datos[1] + "', '" + datos[2] + "')";
+                sql = "INSERT INTO usuarios_usss078426(usuario,clave,nombre,direccion,telefono) VALUES ('"
+                    + datos[1] + "', '" + datos[2] + "', '" + datos[3] + "', '" + datos[4] + "', '" + datos[5] + "')";
             }
             else if (accion == "modificar")
             {
-                sql = "UPDATE usuarios_usss078426 SET usuario='" + datos[1] + "', contrasena='" + datos[2] + "' WHERE idUsuario='" + datos[0] + "'";
+                sql = "UPDATE usuarios_usss078426 SET usuario='" + datos[1] + "', clave='" + datos[2]
+                    + "', nombre='" + datos[3] + "', direccion='" + datos[4] + "', telefono='" + datos[5]
+                    + "' WHERE idUsuario='" + datos[0] + "'";
             }
             else if (accion == "eliminar")
             {
