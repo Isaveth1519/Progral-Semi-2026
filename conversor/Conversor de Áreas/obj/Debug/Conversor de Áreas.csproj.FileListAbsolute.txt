@@ -1,0 +1,20 @@
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\bin\Debug\Conversor de Áreas.exe.config
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\bin\Debug\Conversor de Áreas.exe
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\bin\Debug\Conversor de Áreas.pdb
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.csproj.AssemblyReference.cache
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor_de_Áreas.frmConversorAreas.resources
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor_de_Áreas.Properties.Resources.resources
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.csproj.GenerateResource.cache
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.csproj.CoreCompileInputs.cache
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.exe
+C:\Users\alber\source\repos\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.pdb
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\bin\Debug\Conversor de Áreas.exe.config
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\bin\Debug\Conversor de Áreas.exe
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\bin\Debug\Conversor de Áreas.pdb
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.csproj.AssemblyReference.cache
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor_de_Áreas.frmConversorAreas.resources
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor_de_Áreas.Properties.Resources.resources
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.csproj.GenerateResource.cache
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.csproj.CoreCompileInputs.cache
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.exe
+C:\Users\Isaias\Downloads\PrograI-Semi-2026-main\PrograI-Semi-2026-main\Parcial I - Cómputo I\Conversor de Áreas\Conversor de Áreas\obj\Debug\Conversor de Áreas.pdb
