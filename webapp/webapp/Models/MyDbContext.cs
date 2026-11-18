@@ -3,6 +3,7 @@ namespace webapp.Models
 {
     public class MyDbContext : DbContext
     {
+        public DbSet<webapp.Models.Materia> Materia { get; set; } = default!;
         public MyDbContext() { }
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
         public DbSet<Alumno> Alumnos { get; set; }
@@ -10,6 +11,7 @@ namespace webapp.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Alumno>().HasKey(a=>a.idAlumno);
+            modelBuilder.Entity<Materia>().HasKey(m=>m.idMateria);
         }
     }
 }
