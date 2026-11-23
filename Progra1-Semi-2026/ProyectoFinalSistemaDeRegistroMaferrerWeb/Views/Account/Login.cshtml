@@ -46,8 +46,16 @@
                         <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="••••••••" required />
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-semibold">
-                    Ingresar al Sistema <i class="bi bi-arrow-right-short"></i>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary rounded-pill py-2 fw-semibold">
+                        Ingresar al Sistema <i class="bi bi-arrow-right-short"></i>
+                    </button>
+                </div>
+            </form>
+
+            <form asp-controller="Account" asp-action="Salir" method="post" class="d-grid mt-2">
+                <button type="submit" class="btn btn-outline-danger rounded-pill py-2 fw-semibold">
+                    <i class="bi bi-power me-1"></i>Salir del Sistema
                 </button>
             </form>
         </div>

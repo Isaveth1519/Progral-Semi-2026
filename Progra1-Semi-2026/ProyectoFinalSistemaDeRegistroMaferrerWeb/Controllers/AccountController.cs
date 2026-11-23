@@ -8,6 +8,13 @@ namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IHostApplicationLifetime _lifetime;
+
+        public AccountController(IHostApplicationLifetime lifetime)
+        {
+            _lifetime = lifetime;
+        }
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
@@ -56,6 +63,19 @@ namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Salir()
+        {
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(300);
+                _lifetime.StopApplication();
+            });
+            return Content("<html><body style='font-family:sans-serif;text-align:center;padding-top:20vh;background:#0f172a;color:#fff'><h3>Sistema cerrado.</h3><p>Puede cerrar esta pestaña.</p><script>window.close();</script></body></html>", "text/html");
         }
     }
 }
