@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +21,15 @@ namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
         }
 
         // GET: Incidentes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? buscar)
         {
-            var maferrerDbContext = _context.Incidentes.Include(i => i.IdHabitantesNavigation);
-            return View(await maferrerDbContext.ToListAsync());
+            ViewData["Buscar"] = buscar;
+            var query = _context.Incidentes.Include(i => i.IdHabitantesNavigation).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(buscar))
+            {
+                query = query.Where(i => i.Tipo.Contains(buscar) || i.Lugar.Contains(buscar) || i.Estado.Contains(buscar) || (i.Descripcion != null && i.Descripcion.Contains(buscar)) || (i.IdHabitantesNavigation != null && i.IdHabitantesNavigation.Nombre.Contains(buscar)));
+            }
+            return View(await query.OrderByDescending(i => i.Id).ToListAsync());
         }
 
         // GET: Incidentes/Details/5
