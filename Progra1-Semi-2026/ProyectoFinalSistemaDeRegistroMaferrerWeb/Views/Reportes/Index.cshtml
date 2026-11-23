@@ -1,0 +1,188 @@
+﻿@using ProyectoFinalSistemaDeRegistroMaferrerWeb.Models
+@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Reportes";
+    string tipo = ViewBag.Tipo ?? "habitantes";
+}
+
+<style>
+    @@media print {
+        .no-print, header, footer { display: none !important; }
+        body { background: #fff !important; }
+    }
+</style>
+
+<div class="d-flex justify-content-between align-items-center mb-3 no-print">
+    <h1 class="mb-0">Reportes</h1>
+    <button type="button" class="btn btn-dark" onclick="window.print()">Imprimir / Guardar PDF</button>
+</div>
+
+<div class="btn-group flex-wrap mb-4 no-print" role="group">
+    <a asp-action="Index" asp-route-tipo="habitantes" class="btn @(tipo == "habitantes" ? "btn-primary" : "btn-outline-primary")">Lista de Habitantes</a>
+    <a asp-action="Index" asp-route-tipo="aportaciones_mes" class="btn @(tipo == "aportaciones_mes" ? "btn-primary" : "btn-outline-primary")">Aportaciones del Mes</a>
+    <a asp-action="Index" asp-route-tipo="solventes_pendientes" class="btn @(tipo == "solventes_pendientes" ? "btn-primary" : "btn-outline-primary")">Solventes y Pendientes</a>
+    <a asp-action="Index" asp-route-tipo="visitas" class="btn @(tipo == "visitas" ? "btn-primary" : "btn-outline-primary")">Registro de Visitas</a>
+    <a asp-action="Index" asp-route-tipo="incidentes" class="btn @(tipo == "incidentes" ? "btn-primary" : "btn-outline-primary")">Registro de Incidentes</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-baseline border-bottom pb-2 mb-3">
+            <div>
+                <h4 class="mb-0">@ViewBag.Titulo</h4>
+                <small class="text-muted">Colonia Alberto Maferrer — Generado el @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</small>
+            </div>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info mb-0">No hay datos para este reporte.</div>
+        }
+        else if (tipo == "aportaciones_mes")
+        {
+            <table class="table table-bordered table-sm align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Habitante</th>
+                        <th>Concepto</th>
+                        <th>Monto</th>
+                        <th>N° Comprobante</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Aportacione item in Model)
+                    {
+                        <tr>
+                            <td>@(item.Fecha?.ToString("dd/MM/yyyy") ?? "-")</td>
+                            <td>@(item.IdHabitantesNavigation?.Nombre ?? "Sin habitante")</td>
+                            <td>@item.Concepto</td>
+                            <td>@item.Monto.ToString("C2")</td>
+                            <td>@(item.NumComprobante ?? "-")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else if (tipo == "solventes_pendientes")
+        {
+            <table class="table table-bordered table-sm align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Habitante</th>
+                        <th>Casa</th>
+                        <th>Estado</th>
+                        <th>Pagos Pendientes</th>
+                        <th>Monto Adeudado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Nombre</td>
+                            <td>@item.Casa</td>
+                            <td>
+                                @if (item.Estado == "Solvente")
+                                {
+                                    <span class="badge bg-success">Solvente</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">Pendiente</span>
+                                }
+                            </td>
+                            <td>@item.PagosPendientes</td>
+                            <td>@(((decimal)item.MontoAdeudado).ToString("C2"))</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else if (tipo == "visitas")
+        {
+            <table class="table table-bordered table-sm align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Entrada</th>
+                        <th>Visitante</th>
+                        <th>Casa</th>
+                        <th>Motivo</th>
+                        <th>Habitante</th>
+                        <th>Salida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Visitante item in Model)
+                    {
+                        <tr>
+                            <td>@item.HoraEntrada.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@item.NombreVisitante</td>
+                            <td>@item.NumeroCasa</td>
+                            <td>@item.Motivo</td>
+                            <td>@(item.IdHabitantesNavigation?.Nombre ?? "Sin habitante")</td>
+                            <td>@(item.HoraSalida?.ToString("dd/MM/yyyy HH:mm") ?? "En visita")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else if (tipo == "incidentes")
+        {
+            <table class="table table-bordered table-sm align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Lugar</th>
+                        <th>Descripción</th>
+                        <th>Habitante</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Incidente item in Model)
+                    {
+                        <tr>
+                            <td>@item.Fecha.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Tipo</td>
+                            <td>@item.Lugar</td>
+                            <td>@(item.Descripcion ?? "-")</td>
+                            <td>@(item.IdHabitantesNavigation?.Nombre ?? "Sin habitante")</td>
+                            <td>@item.Estado</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <table class="table table-bordered table-sm align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Casa / Código</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Habitante item in Model)
+                    {
+                        <tr>
+                            <td>@item.Nombre</td>
+                            <td>@item.Código</td>
+                            <td>@(item.Direccion ?? "-")</td>
+                            <td>@(item.Telefono ?? "-")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        <div class="fw-bold text-end mt-3 pt-2 border-top">
+            @ViewBag.Resumen
+        </div>
+    </div>
+</div>

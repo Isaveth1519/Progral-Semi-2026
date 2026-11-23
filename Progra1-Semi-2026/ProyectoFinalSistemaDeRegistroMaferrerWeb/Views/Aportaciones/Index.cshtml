@@ -1,63 +1,79 @@
-@model IEnumerable<ProyectoFinalSistemaDeRegistroMaferrerWeb.Models.Aportacione>
+﻿@model IEnumerable<ProyectoFinalSistemaDeRegistroMaferrerWeb.Models.Aportacione>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Aportaciones";
+    var lista = Model.ToList();
+    var totalRecaudado = lista.Where(a => a.Estado == "Solvente").Sum(a => a.Monto);
+    var cantSolventes = lista.Count(a => a.Estado == "Solvente");
+    var cantPendientes = lista.Count(a => a.Estado == "Pendiente");
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Aportaciones</h1>
+    <a asp-action="Create" class="btn btn-primary">Nuevo registro</a>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card border-primary shadow-sm h-100">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Total Recaudado (Solvente)</h6>
+                <h3 class="card-title text-primary fw-bold mb-0">@totalRecaudado.ToString("C2")</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-success shadow-sm h-100">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Aportaciones Solventes</h6>
+                <h3 class="card-title text-success fw-bold mb-0">@cantSolventes</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-warning shadow-sm h-100">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Aportaciones Pendientes</h6>
+                <h3 class="card-title text-warning fw-bold mb-0">@cantPendientes</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-light">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Concepto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Monto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumComprobante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdHabitantesNavigation)
-            </th>
+            <th>Fecha</th>
+            <th>Concepto</th>
+            <th>Monto</th>
+            <th>N° Comprobante</th>
+            <th>Estado</th>
+            <th>Habitante</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in lista) {
         <tr>
+            <td>@(item.Fecha?.ToString("dd/MM/yyyy") ?? "-")</td>
+            <td>@item.Concepto</td>
+            <td>@item.Monto.ToString("C2")</td>
+            <td>@(string.IsNullOrWhiteSpace(item.NumComprobante) ? "-" : item.NumComprobante)</td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
+                @if (item.Estado == "Solvente")
+                {
+                    <span class="badge bg-success">Solvente</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning text-dark">@item.Estado</span>
+                }
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Concepto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Monto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumComprobante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdHabitantesNavigation.IdHabitantes)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdAportacion">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdAportacion">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdAportacion">Delete</a>
+            <td>@(item.IdHabitantesNavigation?.Nombre ?? "Sin habitante")</td>
+            <td class="text-end">
+                <a asp-action="Edit" asp-route-id="@item.IdAportacion">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAportacion">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAportacion">Eliminar</a>
             </td>
         </tr>
 }

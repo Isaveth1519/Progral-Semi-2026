@@ -1,3 +1,4 @@
+﻿using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using ProyectoFinalSistemaDeRegistroMaferrerWeb.Models;
 
 namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
 {
+    [Authorize]
     public class HabitantesController : Controller
     {
         private readonly MaferrerDbContext _context;
@@ -53,7 +55,7 @@ namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdHabitantes,Código,Nombre,Direccion,Telefono")] Habitante habitante)
+        public async Task<IActionResult> Create([Bind("IdHabitantes,CÃ³digo,Nombre,Direccion,Telefono")] Habitante habitante)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +87,7 @@ namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdHabitantes,Código,Nombre,Direccion,Telefono")] Habitante habitante)
+        public async Task<IActionResult> Edit(int id, [Bind("IdHabitantes,CÃ³digo,Nombre,Direccion,Telefono")] Habitante habitante)
         {
             if (id != habitante.IdHabitantes)
             {
@@ -154,3 +156,4 @@ namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
         }
     }
 }
+

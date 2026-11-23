@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Iniciar Sesión";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Colonia Alberto Maferrer</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+    <div class="card shadow-sm" style="width: 100%; max-width: 400px;">
+        <div class="card-body p-4">
+            <h4 class="card-title text-center mb-1">Colonia Alberto Maferrer</h4>
+            <p class="text-muted text-center mb-4">Sistema de Registro</p>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger py-2" role="alert">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" required autofocus />
+                </div>
+                <div class="mb-3">
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" name="contrasena" required />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
