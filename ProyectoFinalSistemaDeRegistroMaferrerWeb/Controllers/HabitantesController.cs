@@ -27,7 +27,7 @@ namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
             var query = _context.Habitantes.AsQueryable();
             if (!string.IsNullOrWhiteSpace(buscar))
             {
-                query = query.Where(h => h.Nombre.Contains(buscar) || h.Código.Contains(buscar) || (h.Direccion != null && h.Direccion.Contains(buscar)) || (h.Telefono != null && h.Telefono.Contains(buscar)));
+                query = query.Where(h => h.Nombre.Contains(buscar) || h.Codigo.Contains(buscar) || (h.Direccion != null && h.Direccion.Contains(buscar)) || (h.Telefono != null && h.Telefono.Contains(buscar)));
             }
             return View(await query.OrderBy(h => h.Nombre).ToListAsync());
         }

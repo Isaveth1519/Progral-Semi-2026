@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +51,7 @@ namespace ProyectoFinalSistemaDeRegistroMaferrerWeb.Controllers
                         .Select(h => new
                         {
                             Nombre = h.Nombre,
-                            Casa = h.Código,
+                            Casa = h.Codigo,
                             PagosPendientes = h.Aportaciones.Count(a => a.Estado == "Pendiente"),
                             MontoAdeudado = h.Aportaciones.Where(a => a.Estado == "Pendiente").Sum(a => a.Monto),
                             Estado = h.Aportaciones.Any(a => a.Estado == "Pendiente") ? "Pendiente" : "Solvente"

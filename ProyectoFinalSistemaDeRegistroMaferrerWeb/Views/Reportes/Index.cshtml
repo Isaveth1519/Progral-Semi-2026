@@ -1,4 +1,4 @@
-﻿@using ProyectoFinalSistemaDeRegistroMaferrerWeb.Models
+@using ProyectoFinalSistemaDeRegistroMaferrerWeb.Models
 @model IEnumerable<dynamic>
 
 @{
@@ -162,7 +162,7 @@
                 <thead class="table-light">
                     <tr>
                         <th>Nombre</th>
-                        <th>Casa / Código</th>
+                        <th>Casa / Codigo</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
                     </tr>
@@ -172,7 +172,7 @@
                     {
                         <tr>
                             <td>@item.Nombre</td>
-                            <td>@item.Código</td>
+                            <td>@item.Codigo</td>
                             <td>@(item.Direccion ?? "-")</td>
                             <td>@(item.Telefono ?? "-")</td>
                         </tr>

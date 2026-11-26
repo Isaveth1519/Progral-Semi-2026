@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +9,8 @@ public partial class Habitante
     public int IdHabitantes { get; set; }
 
     [Required(ErrorMessage = "El código de casa es obligatorio.")]
-    public string Código { get; set; } = null!;
+    [Display(Name = "Código")]
+    public string Codigo { get; set; } = null!;
 
     [Required(ErrorMessage = "El nombre del habitante es obligatorio.")]
     public string Nombre { get; set; } = null!;

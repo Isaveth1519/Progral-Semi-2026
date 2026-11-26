@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
@@ -59,7 +59,7 @@ public partial class MaferrerDbContext : DbContext
             entity.ToTable("habitantes");
 
             entity.Property(e => e.IdHabitantes).HasColumnName("idHabitantes");
-            entity.Property(e => e.Código)
+            entity.Property(e => e.Codigo)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("código");
